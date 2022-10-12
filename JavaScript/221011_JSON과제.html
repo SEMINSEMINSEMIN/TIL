@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        thead,
+        tbody,
+        tr,
+        th,
+        td {
+            border: solid 1px black;
+            border-collapse: collapse;
+        }
+
+        #infoTable {
+            width: 100%;
+        }
+
+        th {
+            width: calc(100% / 7);
+        }
+        
+        button {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <table id="infoTable">
+        <thead>
+            <th>id</th>
+            <th>age</th>
+            <th>eyeColor</th>
+            <th>name</th>
+            <th>gender</th>
+            <th>email</th>
+            <th>phone</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <button onclick="averageAge(jsonData)">
+        나이의 평균 구하기
+    </button>
+    <p id="averageResult"></p>
+    <script>
+        var jsonData = [
+            {
+                "_id": "5e80777f673acf89c007ff91",
+                "age": 27,
+                "eyeColor": "green",
+                "name": "Angelina Chang",
+                "gender": "female",
+                "email": "angelinachang@kangle.com",
+                "phone": "+1 (938) 477-2821"
+            },
+            {
+                "_id": "5e80777feee717674b817fd2",
+                "age": 25,
+                "eyeColor": "green",
+                "name": "Deidre Cobb",
+                "gender": "female",
+                "email": "deidrecobb@kangle.com",
+                "phone": "+1 (938) 477-2824"
+            },
+            {
+                "_id": "5e80777fac368a4578dda85d",
+                "age": 25,
+                "eyeColor": "blue",
+                "name": "Jolene Franks",
+                "gender": "female",
+                "email": "jolenefranks@kangle.com",
+                "phone": "+1 (985) 536-3981"
+            },
+            {
+                "_id": "5e80777ff3717874cbc78e44",
+                "age": 31,
+                "eyeColor": "brown",
+                "name": "Waters Hardin",
+                "gender": "male",
+                "email": "watershardin@kangle.com",
+                "phone": "+1 (938) 559-2224"
+            },
+            {
+                "_id": "5e80777fe36842ea9e024fcd",
+                "age": 34,
+                "eyeColor": "green",
+                "name": "Jody Chaney",
+                "gender": "female",
+                "email": "jodychaney@kangle.com",
+                "phone": "+1 (878) 587-2602"
+            },
+            {
+                "_id": "5e80777fafd591f57344eb33",
+                "age": 31,
+                "eyeColor": "green",
+                "name": "Ortiz Maldonado",
+                "gender": "male",
+                "email": "ortizmaldonado@kangle.com",
+                "phone": "+1 (986) 509-2753"
+            },
+            {
+                "_id": "5e80777f20e48e9ada226862",
+                "age": 25,
+                "eyeColor": "brown",
+                "name": "Stacy Burris",
+                "gender": "female",
+                "email": "stacyburris@kangle.com",
+                "phone": "+1 (864) 577-3500"
+            },
+            {
+                "_id": "5e80777faf334f84a2c90595",
+                "age": 33,
+                "eyeColor": "brown",
+                "name": "Davenport Levy",
+                "gender": "male",
+                "email": "davenportlevy@kangle.com",
+                "phone": "+1 (990) 600-2700"
+            }
+        ];
+
+        let tbodyData = [];
+        
+        for (const i of jsonData) {
+            tbodyData.push(`
+                <tr>
+                    <td>${i._id}</td>
+                    <td>${i.age}</td>
+                    <td>${i.eyeColor}</td>
+                    <td>${i.name}</td>
+                    <td>${i.gender}</td>
+                    <td>${i.email}</td>
+                    <td>${i.phone}</td>
+                </tr>
+            `);
+        }
+
+        console.log(tbodyData);
+        document.querySelector("#infoTable > tbody").innerHTML = tbodyData.join('');
+
+        function averageAge(arr){
+            const ageSum = arr.map(i => i.age).reduce((a, b) => a + b);
+            const average = ageSum / arr.length;
+            return document.getElementById("averageResult").innerText = `평균 나이는 ${average}입니다.`;
+        }
+    </script>
+</body>
+</html>
