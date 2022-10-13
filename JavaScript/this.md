@@ -1,13 +1,16 @@
 ## this란?
 객체 자신의 프로퍼티나 메서드를 참조하기 위한 자기 참조 변수
 
-대부분의 경우 this의 값은 함수를 호출한 방법에 의해 결정된다
+대부분의 경우 this의 값은 함수를 호출한 방법에 의해 결정된다.
+
+아래 표는 항상 성립하는 것은 아님
 |함수 호출 방식|this 바인딩|
 |:---:|:---:|
 |일반 함수로서 호출|전역 객체|
 |메서드로서 호출|메서드를 호출한 객체(마침표 앞의 객체)|
 |생성자 함수로서 호출|생성자 함수가 생성하는 인스턴스|
-
+|화살표 함수|상위스코프|
+|콜백 함수|this가 다르게 동작할 수 있음|
 ## 일반 함수로서 호출
 ```javascript
 function a(){
@@ -49,6 +52,8 @@ console.log(sayName());
 // Window {window: Window, self: Window, document: document, name: '', location: Location, …}
 //
 ```
+> 그렇다면 let과 const는 어디 저장되는걸까?
+![](/images/this.png)
 ```javascript
 function a(){
     console.log(this); 

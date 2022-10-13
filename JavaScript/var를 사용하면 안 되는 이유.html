@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <ul>
+            <li>hello1</li> 
+            <!-- 클릭시 3 -->
+            <li>hello2</li>
+            <!-- 클릭시 3 -->
+            <li>hello3</li>
+            <!-- 클릭시 3 -->
+        </ul>
+        <script>
+            const items = document.querySelectorAll("li");
+            // 버그는 아니고 var는 어휘적 유효범위이기 때문에 마지막으로 할당한 값을 콜백함수는 참조하게 됩니다.
+            // 노드 리스트는 forEach로 순회가 가능하긴 한데, IE에서 안됨
+            // 노드 리스트와 어레이는 다르다
+            // for문 내 var를 let으로 사용하면 해결 가능함
+            for (var i = 0; i < items.length; i++) {
+                items[i].addEventListener("click", () => {
+                    alert(i);
+                });
+            }
+        </script>
+    </body>
+</html>
