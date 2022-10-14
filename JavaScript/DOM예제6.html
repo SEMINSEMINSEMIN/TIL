@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <p></p>
+    <script>
+        let name = 'john';
+        const txt = document.querySelector('p');
+        txt.innerHTML = name;
+
+        const name2 = "<script>alert('I am John in an annoying alert!')<\/script>";
+        txt.innerHTML = name2;
+        // '/'는 정규 표현식 리터럴
+        // 그래서 그 앞에 이스케이프 문자를 적어줘야 함!
+        // HTML5 는 innerHTML 과 함께 삽입된 <script> 태그가 실행되지 않도록 지정합니다.
+
+        const name3 = "<img src='x' onerror='alert(1)'>";
+        txt.innerHTML = name3;
+        // onerror는 이미지 로딩시 실행됨
+        // 자바스크립트를 실행하는 방법이 있음
+        // 단순 텍스트를 삽입할 때는 innerHTML을 사용하지 않는게 좋음
+    </script>
+</body>
+</html>

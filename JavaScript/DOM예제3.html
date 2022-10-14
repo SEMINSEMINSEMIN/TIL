@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .canvas {
+            width: 500px;
+            height: 500px;
+            background-color: black;
+            margin: 0 auto;
+        }
+        
+        ul {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .canvas.red {
+            background-color: red;
+        }
+
+        .canvas.green {
+            background-color: green;
+        }
+
+        .canvas.yellow {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas">
+    </div>
+    <ul>
+        <li>
+            <button type="button" id="redBtn">red</button>
+        </li >
+        <li>
+            <button type="button" id=yellowBtn>yellow</button>
+        </li>
+        <li>
+            <button type="button" id="greenBtn">green</button>
+        </li>
+    </ul>
+    <script>
+        const canvas = document.querySelector(".canvas");
+        const buttons = document.querySelectorAll("button");
+        // const redBtn = document.querySelector("#redBtn");
+        // const yellowBtn = document.querySelector("#yellowBtn");
+        // const greenBtn = document.querySelector("#greenBtn");
+
+        // redBtn.addEventListener('click', function(){
+        //     canvas.classList = 'canvas';
+        //     // canvas.classList.remove(
+        //     // "red", "green", "yellow");
+        //     canvas.classList.add("red");
+        // })
+
+        // greenBtn.addEventListener('click', function(){
+        //     canvas.classList = 'canvas';
+        //     // canvas.classList.remove(
+        //     // "red", "green", "yellow");
+        //     canvas.classList.add("green");
+        // })
+
+        // yellowBtn.addEventListener('click', function(){
+        //     canvas.classList = 'canvas';
+        //     // canvas.classList.remove(
+        //     // "red", "green", "yellow");
+        //     canvas.classList.add("yellow");
+        // })
+        
+        /*
+        //// 풀이 1
+        */
+        // for (const button of buttons){
+        //     button.addEventListener('click', function(){
+        //         const id = button.id;
+        //         // console.log(id);
+        //         canvas.classList = 'canvas';
+        //         canvas.classList.add(id.slice(0, -3));
+        //     })
+        // };
+
+        /*
+        //// 풀이 2
+        */
+        buttons.forEach(function(item){
+            item.addEventListener('click', function(){
+                const id = item.id;
+                // console.log(id);
+                canvas.classList = 'canvas';
+                canvas.classList.add(id.slice(0, -3));
+            })
+        })
+    </script>
+</body>
+</html>

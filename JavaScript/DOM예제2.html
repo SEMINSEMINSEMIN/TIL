@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .blue {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    점심 식단
+    <article id="container">
+        <ul>
+            <li>탕수육</li>
+            <li class="item-second">유산슬</li>
+            <li>짜장면</li>
+        </ul>
+    </article>
+
+    저녁 식단
+    <article>
+        <ul>
+            <li>된장국</li>
+            <li class="item-second">김치찌게</li>
+            <li>해장국</li>
+        </ul>
+    </article>
+    <button>HELLO!</button>
+    <script>
+        /* 
+            첫번째 item-second 클래스
+        */
+        const container = document.getElementById("container");
+        console.log(container.getElementsByClassName('item-second')[0]);
+        // conatiner.의 장점: 찾아야하는 범위가 줄어듦
+        // 기준점을 이용해 찾으면 탐색속도가 빨라진다. 자바스크립트 최적화
+        // 웹페이지 로딩속도가 빠를 수록 검색결과 상단에 배치될 가능성이 커짐
+        console.log(document.getElementsByClassName('item-second')[0]);
+
+        // css 선택자로 '단일' 요소에 접근하기
+        console.log(document.querySelector(".item-second"));
+
+        // css 선택자로 '여러' 요소에 접근하기
+        console.log(document.querySelectorAll(".item-second")[0]);
+
+        /* 
+            첫번째 li
+        */
+        console.log(container.getElementsByTagName('li')[0]);
+
+        console.log(document.getElementsByTagName('li')[0]);
+
+        // css 선택자로 '단일' 요소에 접근하기
+        console.log(document.querySelector("li"));
+
+        // css 선택자로 '여러' 요소에 접근하기
+        console.log(document.querySelectorAll("li")[0]);
+
+        /*
+            이벤트 삽입
+        */
+        const myBtn = document.querySelector("button");
+
+        myBtn.addEventListener('click', function(){
+            console.log("hello world");
+        })
+
+        myBtn.addEventListener('click', function(){
+            // blue 라는 클래스의 속성 값을 지정 할 수 있습니다.
+            // myBtn.classList.add("blue");
+
+            // myBtn.classList.remove(“blue”);
+            // 클래스를 제거합니다.
+
+            myBtn.classList.toggle("blue");
+            // 클래스를 토글합니다. 없으면 넣어주고, 있으면 제거합니다.
+            // 많이 사용함: ex. 다크모드
+
+            // myBtn.classList.contains(“blue”);
+            // 해당하는 클래스가 있는지 확인합니다.
+            // 조건문
+            /* 
+                // 꼭 이벤트리스너 안에 있어야 하는건 아님
+                if (myBtn.classList.contains("blue")){
+                    ...
+                } else{
+                    ...
+                }
+            */
+        })
+    </script>
+</body>
+</html>
