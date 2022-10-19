@@ -1,0 +1,119 @@
+<!-- SPA: Single Page Application, index.html에서 모두 서비스되고 있는 페이지 -->
+<!-- 눌렀을 때 URL이 변하는건 JS로 컨트롤 -->
+<!-- 눌렀을 때 다른 페이지가 보이는거도 JS로 컨트롤 -->
+<!-- 장점: 자원을 아낄 수 있다, 재활용성을 높일 수 있다, 깜빡임이 없다(이미 로드된 상태) -->
+<!-- 단점: 개발 복잡도가 높음, 검색 엔진에서 검색이 제대로 되지 않을 수 있다(검색 키워드를 상단에 다 빼거나, 라이브러리 이용 등등 - 다 스크립트로 되어 있으니까 제대로 검색이 안 되는 경우가 있음) -->
+
+
+<!-- MPA: Multi Page Application -->
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>위니브 스토어</title>
+        <link
+            href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link rel="stylesheet" href="src/style/style.css" />
+    </head>
+
+    <body>
+        <div id="root"></div>
+        <script>
+            const root = document.getElementById('root');
+            const mainElement = document.createElement('main');
+            mainElement.classList.add('product');
+            root.appendChild(mainElement);
+
+            async function getProductData(){
+                const response = await fetch("http://test.api.weniv.co.kr/mall");
+                
+                const products = await response.json();
+                
+                const productListCont = document.createElement('ul');
+                productListCont.classList.add("product-list");
+                mainElement.appendChild(productListCont);
+                
+                // "https://test.api.weniv.co.kr/" + item.thumbnailImg
+                products.forEach(product => {
+                    const productList = document.createElement('li');
+                    productList.classList.add('product-item');
+                    const a = document.createElement('a');
+                    const h2 = document.createElement('h2');
+                    h2.classList.add('product-name');
+                    const img = document.createElement('img');
+                    img.classList.add('product-img');
+                    const p = document.createElement('p');
+                    a.setAttribute("href", "https://test.api.weniv.co.kr/" +`${product.detailInfoImage[0]}`);
+                    h2.textContent = product.productName;
+                    img.setAttribute("src", "https://test.api.weniv.co.kr/" + `${product.thumbnailImg}`);
+                    p.textContent = product.price;
+                    a.appendChild(h2);
+                    a.appendChild(img);
+                    a.appendChild(p);
+                    productList.appendChild(a);
+                    productListCont.appendChild(productList);
+                });
+            }
+
+            getProductData();
+
+
+        //     async function getProductData(){
+        //         // fetch는 promise를 반환
+        //         // await을 앞에 붙여줘야 함!
+        //         const response = await fetch("http://test.api.weniv.co.kr/mall");
+        //         const product = response.json();
+        //         return product;
+        //     }
+
+        //     // const products = await getProducts();
+        //     // console.log(products);
+
+        //     getProductData()
+        //         .then(product => {
+        //             // console.log(product);
+        //             const mainElement = document.createElement('main');
+        //             mainElement.classList.add('product');
+        //             // console.log(mainElement);
+                    
+        //             // 통일성을 해친거
+        //             // 처음부터 innerHTML을 했으면 끝까지 그렇게 가는게 좋음
+        //             // 처음부터 DOM을 했으면 끝까지 그렇게 가는게 좋음
+        //             // innerHTML: 보안 이슈, 변수로 관리를 못해서 다시 querySelector 이런거 써야함
+        //             // createElement의 경우 그냥 변수를 가져오면 되는데!
+        //             mainElement.innerHTML = `
+        //                 <h1 class="ir">상품목록</h1>
+        //                 <ul class="product-list"></ul>
+        //             `;
+        //             // console.log(mainElement);
+        //             const productList = mainElement.querySelector('.product-list');
+        //             product.forEach((item) => {
+        //                 // console.log(item);
+        //                 const productDetailLink = document.createElement('a');
+        //                 productDetailLink.href = `/detail/${item.id}`;
+        //                 // console.log(productDetailLink);
+        //                 productDetailLink.innerHTML = `
+        //                 <li>
+        //                     <div>${item.thumbnailImg}</div>
+        //                     <div>${item.productName}</div>
+        //                     <div>${item.price}</div>
+        //                 </li>
+        //                 `;
+        //                 productList.append(productDetailLink);
+        //             });
+        //             console.log(mainElement);
+        //             const cart = document.createElement("a");
+        //             cart.setAttribute("class", "link-btn cart-link");
+        //             mainElement.append(cart);
+
+        //             // console.log(productList)
+        //             // console.log(mainElement)
+        //             root.append(mainElement);
+        //         })
+        </script>
+    </body>
+</html>

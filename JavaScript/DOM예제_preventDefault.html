@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!-- 앵커의 기본 동작(페이지 이동)을 중지 -->
+    <!-- <a href="https://www.naver.com" class="link">네이버 링크입니다만..</a>
+    <script>
+        const link = document.querySelector('.link');
+        link.addEventListener('click', (event) => {
+            console.log('clicked');
+            event.preventDefault();
+        })
+    </script> -->
+
+    <!-- submit 의 기본 동작을 중지 -->
+    <!-- type="submit" 기본 기능: 새로고침 -->
+    <!-- ajax 기능을 하는 이유중에 하나가 새로고침되는게 싫어서 하는거도 있음 -->
+    <!-- 이러한 기본 기능을 막고 싶을 때 -->
+    <!-- <form action="">
+        <button type="submit" class="submit">제출</button>
+    </form>
+    <script>
+        const submit = document.querySelector('.submit');
+        submit.addEventListener('click', (event) => {
+            console.log('clicked');
+            event.preventDefault();
+        })
+    </script> -->
+
+    <!-- 이벤트 타입 contextmenu를 이용해 브라우저 오른쪽 버튼 이벤트 막고 '해당 페이지에서는 오른쪽 클릭을 제한합니다.’ 경고 띄우기 -->
+    <script>
+        // keydown
+        document.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+            window.alert('해당 페이지에서는 오른쪽 클릭을 제한합니다!');
+        })
+    </script>
+    
+</body>
+</html>

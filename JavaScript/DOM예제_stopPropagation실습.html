@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>나의 todo list</h1>
+    <p>1. 오늘 저녁에는 부대찌게를 끓여 먹겠다.<button type="button">삭제</button></p>
+    <p>2. 후식으로 슈팅스타를 먹겠다.<button type="button">삭제</button></p>
+    <p>3. 자기 전에 반드시 내일 아침 메뉴를 생각해두겠다.<button type="button">삭제</button></p>
+    <!-- <script>
+        document.body.addEventListener('click', function (event) {
+            // console.log(event.target);
+            if (event.target.nodeName === "P"){
+                window.alert(event.target.textContent.slice(0, -2));
+            }
+            if (event.target.nodeName === "BUTTON"){
+                if (window.confirm("삭제하시겠습니까?")){
+                    event.target.parentElement.remove();
+                }
+            }
+        });
+    </script> -->
+    <script>
+        const txts = document.querySelectorAll('p');
+        const btns = document.querySelectorAll('button');
+        // for of 브라우저 호환 문제
+        // for (const item of txts){
+        //     item.addEventListener('click', () => {
+        //         alert(event.target.textContent.slice(0, -2));
+        //     })
+        // }
+
+        // txts는 노드 리스트
+        // forEach IE 미지원
+        // txts.forEach(item => {
+        //     item.addEventListener('click', () => {
+        //         alert(event.target.textContent.slice(0, -2));
+        //     })
+        // })
+
+        // call: this로 설정할 객체 지정
+        // IE 대응
+        // Array.prototype.forEach.call(txts , (item) => {
+        //     item.addEventListener('click', () => {
+        //         alert(event.target.textContent.slice(0, -2));
+        //     })
+        // });
+
+        for (const item of btns){
+            item.addEventListener('click', (event) => {
+                const result = confirm('삭제 하시겠습니까?');
+
+                if(result){
+                    item.parentElement.remove();
+                }
+
+                // 아래 코드 주석 달면 마지막에 아무것도 없는 알림창 뜸
+                // 위로 올라가는데 위로 올라가서 event.target은 button인데(버튼에서 이벤트가 일어났으니까) 버튼에 슬라이스 적용하면 빈문자열
+                event.stopPropagation();
+            })
+        }
+    </script>
+</body>
+</html>
