@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+}
+
+#mainForm {
+    width: 460px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #FF8787;
+}
+
+#mainForm fieldset {
+    border: none;
+}
+
+#mainForm legend {
+    font-size: 1.3em;
+    text-align: center;
+}
+
+#mainForm label {
+    display: block;
+}
+
+#mainForm input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+/* 가상클래스 valid. input에 입력받은 값이 유효하다면 스타일을 적용합니다. */
+#mainForm input:valid {
+    background-color: #E5EBB2;
+}
+
+/* https://html.spec.whatwg.org/multipage/rendering.html#the-fieldset-and-legend-elements */
+
+/* https://velog.io/@parkseonup/%EB%B8%94%EB%A1%9D-%EC%84%9C%EC%8B%9D-%EB%A7%A5%EB%9D%BD-BFC-Block-Formatting-Context */
+#mainForm button {
+    float: right;
+    padding: 10px;
+    margin-left: 10px;
+    background-color: #FBC4B4;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+}
+
+#mainForm progress {
+    width: 100%;
+}
