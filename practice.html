@@ -23,9 +23,12 @@
         const listCont = artcl.querySelector(".list_todo");
 
         function genItem() {
-            const li = document.createElement('li');
-            li.textContent = input.value;
-            listCont.appendChild(li);
+            if (input.value){
+                const li = document.createElement('li');
+                li.textContent = input.value;
+                listCont.appendChild(li);
+                input.value = '';
+            }
         }
 
         addBtn.addEventListener('click', genItem);
@@ -37,9 +40,10 @@
                 keys.pop();
             }
             console.log(keys);
-            // if (keys[0] === "Enter" && keys[1] !== "Enter") {
-            //     genItem();
-            // }
+            if (keys[0] === "Enter" && keys[1] !== "Enter") {
+                // console.log(keys);
+                genItem();
+            }
         }
 
         input.addEventListener('keyup', enterkey);
