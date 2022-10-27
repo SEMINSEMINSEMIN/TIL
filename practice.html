@@ -33,20 +33,15 @@
 
         addBtn.addEventListener('click', genItem);
 
-        let keys = [];
         function enterkey(event) {
-            keys.unshift(event.key);
-            if (keys.length > 2) {
-                keys.pop();
-            }
-            console.log(keys);
-            if (keys[0] === "Enter" && keys[1] !== "Enter") {
-                // console.log(keys);
+            console.log(event);
+            if (event.key === "Enter" && event.isComposing === false){
                 genItem();
             }
         }
 
-        input.addEventListener('keyup', enterkey);
+        input.addEventListener('keydown', enterkey);
+
     </script>
 </body>
 </html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .target {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            margin: 0 auto;
+            /* transition: .2s; */
+        }
+    </style>
+</head>
+<body>
+    <div class="target"></div>
+    <!-- <script>
+        // https://developer.mozilla.org/ko/docs/Web/API/Window/requestAnimationFrame
+        let move = 0;
+        const target = document.querySelector(".target");
+        function targetMove(event){
+            if (event.key === "ArrowRight"){
+                move += 15;
+                target.style.transform = `translateX(${move}px)`;
+            } else if (event.key === "ArrowLeft"){
+                move -= 15;
+                target.style.transform = `translateX(${move}px)`;
+            }
+        }
+        document.addEventListener("keydown", targetMove);
+    </script> -->
+    <script>
+        const target = document.querySelector(".target");
+        let pos = 0;
+
+        // 사용자가 누르는 키의 상태를 저장하는 객체
+        let keys = {};
+
+        function move(event) {
+            keys[event.key] = true;
+        }
+
+        function stop(event) {
+            keys[event.key] = false;
+        }
+
+        document.addEventListener("keydown", move);
+        document.addEventListener("keyup", stop);
+
+        function play(){
+            if (keys.ArrowRight){
+                pos += 5;
+                target.style.transform = `translateX(${pos}px)`;
+            }
+
+            if (keys.ArrowLeft){
+                pos -= 5;
+                target.style.transform = `translateX(${pos}px)`;
+            }
+            window.requestAnimationFrame(play);
+        }
+        window.requestAnimationFrame(play);
+    </script>
+</body>
+</html>
