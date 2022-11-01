@@ -888,7 +888,7 @@ zip([10, 20, 30, 4], [1, 2, 3]);
             let 순회용현재노드 = this.head;
             순회용현재노드 = 순회용현재노드.next;
             
-            for (let i = 0; i < index - 1; i++) {
+            for (let i = 0; i <= index - 1; i++) {
                 순회용현재노드 = 순회용현재노드.next;
             }
 
