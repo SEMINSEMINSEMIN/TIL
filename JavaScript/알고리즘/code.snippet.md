@@ -936,7 +936,7 @@ zip([10, 20, 30, 4], [1, 2, 3]);
     list3.pre = list2;
     list4.pre = list3;
 
-    list3.next.next.value; // 37
+    list1.next.next.value; // 37
     list3.pre.pre.value; // 12
     list4.pre.pre.pre.next.next.value; // 37
     ```
@@ -963,7 +963,6 @@ zip([10, 20, 30, 4], [1, 2, 3]);
             새로운노드.pre = this.tail;
 
             this.tail = 새로운노드;
-            this.length += 1;
         }
     }
 
@@ -976,20 +975,239 @@ zip([10, 20, 30, 4], [1, 2, 3]);
     l.append(30);
     ```
 ### 1.4.3 트리와 그래프
+-   트리
+    -   나무를 거꾸로 뒤지벙 놓은 모양
+    -   뿌리(Rood Node), 가지(Edge), 잎(Left Node)
+    -   탐색을 위한 자료구조
+    -   최적의 해 찾기
+    ![](%ED%8A%B8%EB%A6%AC.png)
+    ![](%ED%8A%B8%EB%A6%AC2.png)
+    -   E와 F는 형제가 아님
+    -   이진 트리: 자식 노드가 최대 두 개인 트리
+        ![](트리3.png)
+    -   큰 값이 오른쪽으로 작은 값이 왼쪽으로(오른쪽, 왼쪽 규칙은 바꿀 수 있음)
+-   그래프
+    -   그래프는 트리와 달리 순회가 가능
+-   깊스넓큐
+    -   깊이 우선 탐색(스택): 출제율 20%, 손코딩 필수!
+        ![](DFS.png)
+    -   넓이 우선 탐색(큐): 출제율 20%, 손코딩 필수!
+        ![](BFS.png)
 
+-   ![](트리4.png)
+    ```js
+    const tree = {
+        root: {
+            value: 5,
+            left: {
+                value: 3,
+                left: {
+                    value: 1,
+                    left: null,
+                    right: null
+                },
+                right: {
+                    value: 4,
+                    left: null,
+                    right: null
+                }
+            },
+            right: {
+                value: 8,
+                left: {
+                    value: 6,
+                    left: null,
+                    right: null
+                },
+                right: {
+                    value: 9,
+                    left: null,
+                    right: null
+                }
+            }
+        }
+    }
+    ```
+-   노드를 만들어서 삽입하는 식으로 트리 구현
+    ![](트리5.png)
+    ```js
+    const root = {
+        value: 55,
+        left: null,
+        right: null
+    }
+
+    node1 = {value: 53, left: null, right: null}
+    node2 = {value: 99, left: null, right: null}
+    node3 = {value: 37, left: null, right: null}
+    node4 = {value: 54, left: null, right: null}
+
+    root.left = node1;
+    root.right = node2;
+
+    node1.left = node3;
+    node1.right = node4;
+    ```
+-   클래스로 트리를 구현
+    -   클래스로 구현하는 이유
+        -   더 라이트한 모델을 만들기 위해
+        -   확장성: 메서드 같은 것을 만들 수 있음
+        -   OOP(Object Oriented Programming): 객체 지향 프로그래밍
+
+    ![](트리5.png)
+    ```js
+    class Node {
+        constructor(data){
+            this.data = data;
+            // this.child = [] // 2진 트리가 아니고 자식이 여러 명일 때
+            this.left = null;
+            this.right = null;
+        }
+    }
+
+    root = new Node(55);
+    node1 = new Node(53);
+    node2 = new Node(99);
+    node3 = new Node(37);
+    node4 = new Node(54);
+
+    root.left = node1;
+    root.right = node2;
+
+    node1.left = node3;
+    node1.right = node4;
+    ```
+-   트리 구현: 완벽한 이진 트리는 아님
+    ```js
+    class Node {
+        constructor(data){
+            this.data = data;
+            // this.child = [] // 2진 트리가 아니고 자식이 여러 명일 때
+            this.left = null;
+            this.right = null;
+        }
+    }
+
+    class Tree {
+        constructor(data){
+            let init = new Node(data);
+            this.root = init;
+            this.length = 0;
+        }
+
+        // length(){ 
+            // this.length와 이름이 같아서 작동하지 않는다. 메서드로 만들 필요 없음
+        //     return this.length;
+        // }
+
+        insert(data){
+            let 새로운노드 = new Node(data);
+            let 순회용현재노드 = this.root;
+
+            while (순회용현재노드){
+                if (data == 순회용현재노드.data){
+                    // 들어온 값이 존재하는 값이면 트리에 값을 추가하지 않도록
+                    // 중복 허용 x
+                    return
+                } else if (data < 순회용현재노드.data){
+                    // 들어온 데이터가 작은 경우 왼쪽에 들어와야 한다!
+                    // 해당 데이터 부분이 비어있으면 넣고, 비어있지 않으면 계속 타고 내려가야 한다.
+                    if (!순회용현재노드.left){
+                        // 비어있는 경우
+                        순회용현재노드.left = 새로운노드;
+                        this.length += 1;
+                        return
+                    }
+
+                    순회용현재노드 = 순회용현재노드.left;
+                } else if (data > 순회용현재노드.data){
+                    if (!순회용현재노드.right){
+                        // 비어있는 경우
+                        순회용현재노드.right = 새로운노드;
+                        this.length += 1;
+                        return
+                    }
+
+                    순회용현재노드 = 순회용현재노드.right;
+                }
+            }
+        }
+
+        // 깊스너큐
+        DFS(){
+            // 깊이 우선 탐색: 스택
+            let 방문경로 = [];
+            let 스택 = [this.root];
+
+            while(스택.length !== 0){
+                let current = 스택.pop();
+                if (current.right){
+                    스택.push(current.right);
+                }
+                if (current.left){
+                    스택.push(current.left);
+                }
+                방문경로.push(current.data);
+            }
+
+            return 방문경로;
+        }
+
+        BFS(){
+            // 넓이 우선 탐색: 큐
+            let 방문경로 = [];
+            let 큐 = [this.root];
+
+            while(스택.length !== 0){
+                let current = 스택.shift();
+                if (current.right){
+                    스택.push(current.right);
+                }
+                if (current.left){
+                    스택.push(current.left);
+                }
+                방문경로.push(current.data);
+            }
+
+            return 방문경로;
+        }
+    }
+
+    let t = new Tree(5);
+    t.insert(3);
+    t.insert(8);
+    t.insert(1);
+    t.insert(4);
+    t.insert(6);
+    t.insert(9);
+
+    t.DFS(); // (7) [5, 3, 1, 4, 8, 6, 9]
+    t.BFS();
+    ```
 ### 1.4.4 정렬 알고리즘
-* 정렬 알고리즘 주의사항
-```js
-입력값 = [199, 22, 33, 12, 32, 64, 72, 222, 233];
-// 입력값.length는 고정값이 아니다!
-// block 안에서 pop을 하게 되면 length가 변함!
-for (let i = 0; i < 입력값.length; i++){
-    console.log(입력값.pop());
-    console.log(i);
-    console.log(입력값.length);
-}
-```
+-   재미있는 사실(재미없을 수도 있습니다. 사례를 말씀드릴게요.)
+    -   JavaScript의 Array의 sort는 알고리즘이 고정이 아닙니다. 각 브라우저마다(벤더사마다) 다른 sort를 사용하고 있어서 같은 값이면 브라우저마다 보여지는 화면이 다를 수 있습니다.
+    -   Google이 Chrome 70 이전에 개수에 따라 다른 알고리즘을 혼합하는 정렬을 사용했다가(InsertionSort & QuickSort 사용) 얼마전에(18년도에) Timsort로 변경했습니다.
+    -   정렬 알고리즘 중에서 가장 인기있는 알고리즘은 병합정렬(존 폰 노이만 제작)이었습니다.
+    -   Python에서 시작된 Timsort로(팀 피터스) 대동단결하고 있는 모양세입니다. Python 만세!
+    -   Timsort는 삽입정렬과 병합정렬을 적절히 조합한 것이고, 2002년도에 Python을 위해 C로 구현되었습니다.
+    -   정렬 알고리즘 3대장 비교(Bset, Worst)
+        -   병합 정렬 : nlogn, nlogn
+        -   퀵 정렬 : nlogn, n\*\*2
+        -   팀소트 : n, nlogn
+-   정렬 알고리즘을 작성할 때 주의사항
+    ```js
+    입력값 = [199, 22, 33, 12, 32, 64, 72, 222, 233];
+    // 입력값.length는 고정값이 아니다!
+    // block 안에서 pop을 하게 되면 length가 변함!
+    for (let i = 0; i < 입력값.length; i++){
+        console.log(입력값.pop());
+        console.log(i);
+        console.log(입력값.length);
+    }
+    ```
 #### 1.4.4.1 선택 정렬
+[알고리즘 시각화 사이트 - 호준님 설명이랑 좀 다름](https://visualgo.net/en/sorting)
 * step
     * step 1
         ```js
@@ -1452,3 +1670,87 @@ function solution(cacheSize, cities){
 ```
 ![](LRU_3.jpg)
 ![](LRU_4.jpg)
+### 2.1.4 [오픈채팅방(19년)](https://tech.kakao.com/2018/09/21/kakao-blind-recruitment-for2019-round-1/)
+-   링크 : https://school.programmers.co.kr/learn/courses/30/lessons/42888?language=javascript
+-   입력레코드
+    ```js
+    [
+        "Enter uid1234 Muzi",
+        "Enter uid4567 Prodo",
+        "Leave uid1234",
+        "Enter uid1234 Prodo",
+        "Change uid4567 Ryan",
+    ];
+    ```
+-   풀이를 위한 기본 문법
+    ```js
+    let test = [
+        'A 10 !',
+        'B 10 !',
+        'A 22',
+        'B 20 @',
+        'A 21 @'
+    ]
+
+    test.forEach(s => {
+        const [a, b, c] = s.split(' ');
+    })
+    ```
+- step별 풀이
+```js
+
+```
+### 2.1.5
+-   링크 : https://school.programmers.co.kr/learn/courses/30/lessons/42889
+```js
+// 스테이지에 도달했으나 아직 클리어하지 못한 플레이어의 수 / 스테이지에 도달한 플레이어 수
+
+// 실패율 === 아직 클리어 못한 플레이어의 수 / 도달한 플레이어 수
+// 전체 스테이지의 개수 N
+// 스테이지의 번호가 담긴 배열 stages가 매개변수
+
+// 실패율이 높은 스테이지부터 내림차순으로 스테이지의 번호가 담겨있는 배열을 return 하도록 solution 함수
+// 만약 실패율이 같은 스테이지가 있다면 작은 번호의 스테이지가 먼저 오도록 하면 된다. (오름차순)
+
+// N    stages                      result
+// 5    [2, 1, 2, 6, 2, 4, 3, 3]    [3, 4, 2, 1, 5]
+// 4    [4, 4, 4, 4, 4]                [4, 1, 2, 3]
+
+// 스테이지에 도달한 사람의 수
+// 1stage === 1
+// 2stage === 3
+// 3stage === 2
+// 4stage === 1
+// 5stage === 0
+
+
+// 실패율
+// 1stage === 1/8
+// 2stage === 3/7 === 3/(8-1)
+// 3stage === 2/4 === 2/(7-3)
+// 4stage === 1/2 === 1/(4-2)
+// 5stage === 0/1 === 0/(2-1)
+
+// [2, 1, 2, 6, 2, 4, 3, 3].filter((user) => user === 3);
+// (2) [3, 3]
+
+// 문제 풀이를 위한 기본 메서드
+[2, 1, 2, 6, 2, 4, 3, 3].filter((user) => user === 3)
+
+[2, 1, 2, 6, 2, 4, 3, 3].filter((user) => user === 3).length // 2
+
+function solution(N, stage){
+    let 실패율 = [];
+    let 유저수 = stages.length;
+
+    for (let i = 1; i < N; i++){
+        let 도달한사람수 = stages.filter((user) => user === i);
+
+        실패율.push(도달한사람수);
+    }
+
+    return 실패율;
+}
+
+solution(5, [2, 1, 2, 6, 2, 4, 3, 3])
+```
