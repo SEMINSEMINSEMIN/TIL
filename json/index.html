@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제코배 스토어 관리자 페이지</title>
+</head>
+<body>
+    <button id="btn-load">상품불러오기</button>
+
+    <br /><br />
+    <!-- <form id="upload-form" method="post" onsubmit="return false"> -->
+        <label for="inp-name">상품이름</label>
+        <input id="inp-name" type="text" required/>
+    
+        <br /><br />
+        <label for="inp-price">제품가격</label>
+        <input id="inp-price" type="number" required/>
+    
+        <br /><br />
+        <label for="inp-stock">재고</label>
+        <input id="inp-stock" type="number" required/>
+    
+        <br /><br />
+    
+        <button type="submit" id="btn-register">상품등록하기</button>
+    <!-- </form> -->
+    <script>
+        // READ
+        const btnLoad = document.querySelector("#btn-load");
+        btnLoad.addEventListener('click', (event) => {
+            fetch("http://localhost:3001/product", {
+                method: "GET"
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    for (item of data){
+                        const $container = document.createElement("section");
+                        const $productName = document.createElement("h2");
+                        const $price = document.createElement("p");
+                        const $stock = document.createElement("p");
+
+                        $productName.innerText = item.productName;
+                        $price.innerText = item.price;
+                        $stock.innerText = item.stockCount;
+
+                        $container.appendChild($productName);
+                        $container.appendChild($price);
+                        $container.appendChild($stock);
+
+                        document.body.appendChild($container);
+                    }
+                });
+        });
+
+        // https://stackoverflow.com/questions/70435252/how-to-prevent-page-from-refreshing-after-javascript-fetch-post-request
+        // https://stackoverflow.com/questions/19454310/stop-form-refreshing-page-on-submit/19454346#19454346
+        // CREATE
+        // 좀 더 세부적인 주소로 하면 된다는 윤철님의 말씀!
+        // post 부분 fetch 다 지우고 실행하면 새로고침이 안되고,,
+        // fetch의 주소를 약간 변경하여(product1) 실행하면 새로고침 없이 post 버튼 누를때마다 추가 되는거로 봐서
+        // post 부분 fetch 다 지우고 실행하면 새로고침이 안되고,,
+        // fetch의 주소를 약간 변경하여(product1) 실행하면 새로고침 없이 post 버튼 누를때마다 추가 되는거로 봐서 fetch로 url에 post할때 새로고침이 발생하는 것 같습니다..
+        // 이유는 모르겠네요
+        // const uploadForm = document.querySelector('#upload-form');
+        // uploadForm.addEventListener('submit', e => {
+        //     e.preventDefault();
+        // });
+
+        // 스택오버플로우 찾아보니 라이브 서버 때문에 그런듯! 허무하네,, 그냥 라이브 서버 없이 직접 파일 여니까 제대로 작동함!
+        // 근데 그래도 나중에 폼 데이터 어떻게 제출하는건지 mdn및 강의 통해 공부하자!
+        const btnRegister = document.querySelector("#btn-register");
+        btnRegister.addEventListener("click", (event) => {
+            const productInfo = {
+                productName: document.querySelector("#inp-name").value,
+                price: document.querySelector("#inp-price").value,
+                stockCount: document.querySelector("#inp-stock").value,
+            };
+
+            // JSON.stringify() 메서드는 JavaScript 값이나 객체를 JSON 문자열로 변환
+            fetch("http://localhost:3001/product", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(productInfo)
+            })
+                .then((response) => response.json())
+                .then((item) => {
+                    const $container = document.createElement("section");
+                    const $productName = document.createElement("h2");
+                    const $price = document.createElement("p");
+                    const $stock = document.createElement("p");
+
+                    $productName.innerText = item.productName;
+                    $price.innerText = item.price;
+                    $stock.innerText = item.stockCount;
+
+                    $container.appendChild($productName);
+                    $container.appendChild($price);
+                    $container.appendChild($stock);
+
+                    document.body.appendChild($container);
+                });
+        });
+    </script>
+</body>
+</html>
