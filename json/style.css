@@ -1,0 +1,61 @@
+#productManage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+
+input {
+    height: 30px;
+}
+
+.ir {
+	position: absolute;
+	clip-path: inset(50%);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+}
+
+.product-item {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid black;
+    padding: 10px;
+}
+
+.product-item h2 {
+    font-size: 16px;
+    grid-column: 1 / span 2;
+}
+
+.product-item .h2Inp {
+    grid-column: 1 / span 2;
+}
+
+.product-item .price, .product-item .priceInp {
+    grid-column: 1 / span 2;
+}
+
+.product-item button {
+    height: 50px;
+}
+
+.product-item .renewBtn {
+    grid-column: 3 / span 1;
+}
+
+.product-item .renewBtn, .product-item .renewCompleted {
+    grid-row: 1 / span 1;
+    grid-column: 3 / span 1;
+}
+
+.product-item .deleteBtn {
+    grid-row: 2 / span 1;
+    grid-column: 3 / span 1;
+}
+
+.hide {
+    display: none;
+}
