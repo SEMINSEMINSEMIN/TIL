@@ -141,7 +141,8 @@
             const $h2 = $section.querySelector('h2');
             const $price = $section.querySelector('.price');
             const $renewCompleted = $section.querySelector('.renewCompleted');
-            e.target.classList.add('hide');
+            const $renewBtn = $section.querySelector(".renewBtn");
+            $renewBtn.classList.add('hide');
             $renewCompleted.classList.remove('hide');
             $h2.classList.add('hide');
             $price.classList.add('hide');
@@ -164,19 +165,47 @@
 
                 // https://jasonwatmore.com/post/2021/09/20/fetch-http-put-request-examples
                 const dataId = $section.getAttribute("id");
-                console.log(dataId);
-                // fetch(`http://localhost:3001/product/${dataId}`, {
-                //     method: "PUT",
-                //     headers: {"Content-Type": "application/json"},
-                //     body: JSON.stringify(productInfo)
-                // })
+                fetch(`http://localhost:3001/product/${dataId}`, {
+                    method: "PUT",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify(productInfo)
+                })
+                .then((response) => response.json())
+                .then((item) => {
+                    $renewCompleted.classList.add('hide');
+                    
+                    const $inpName = $section.querySelector(".h2Inp");
+                    const $inpPrice = $section.querySelector(".priceInp");
+
+                    // ?
+                    if ($inpName && $inpPrice){
+                        $inpName.remove();
+                        $inpPrice.remove();
+                    }
+
+                    $h2.textContent = item.productName;
+                    $h2.classList.remove('hide');
+                    $price.textContent = item.price;
+                    $price.classList.remove('hide');
+                    $renewBtn.classList.remove('hide');
+                })    
             });
         }
 
         // delete
         function deleteFun(e){
-            console.log('바보');
-            console.log(e);
+            const deleteGranted = window.confirm("정말 삭제하시겠습니까?");
+            if (deleteGranted){
+                const $section = e.target.parentElement;
+                const dataId = $section.getAttribute("id");
+                fetch(`http://localhost:3001/product/${dataId}`, {
+                    method: "DELETE",
+                    headers: {"Content-Type": "application/json"}
+                })
+                .then(data => {
+                    $section.remove();
+                });
+            }
         }
     </script>
 </body>
