@@ -1,0 +1,29 @@
+.opposite {
+    background-color: black;
+    color: white;
+}
+
+.black-space {
+    background-color: black;
+    height: 20px;
+}
+
+.ir {
+    position: absolute;
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
+
+.black-section {
+    font-weight: bold;
+    font-size: 32px;
+    background-color: black;
+    color: white;
+}
+
+.red {
+    color: red;
+}

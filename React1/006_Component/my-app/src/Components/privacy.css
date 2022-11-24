@@ -1,0 +1,26 @@
+.name {
+    font-weight: bold;
+    color: blue;
+}
+
+.profile {
+    display: flex;
+    margin: 10px 0;
+}
+
+.profile-img {
+    /* float: left; */
+    max-width: 400px;
+    min-width: 300px;
+    width: 30%;
+    height: 200px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 500px) {
+    .profile {
+        flex-direction: column;
+    }
+    
+}
