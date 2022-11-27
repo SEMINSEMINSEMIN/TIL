@@ -17,6 +17,7 @@ function Time(props) {
     }, 1000);
     return () => {
 			//컴포넌트가 사라지기 전에 setinterval을 clearinterval해줍니다
+      // The global clearInterval() method cancels a timed, repeating action which was previously established by a call to setInterval().
       clearInterval(time);
     };
   }, [today]);
