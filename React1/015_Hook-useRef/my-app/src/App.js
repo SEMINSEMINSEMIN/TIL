@@ -9,6 +9,15 @@ const App = () => {
 
   const inputCheck = (e) => {
     e.preventDefault();
+    if (emailInput.current.value === "") {
+      alert("이메일을 입력해주세요.");
+      emailInput.current.focus();
+      return;
+    } else if (pwInput.current.value === "") {
+      alert("비밀번호를 입력해주세요.");
+      pwInput.current.focus();
+      return;
+    }
     setEmailValue(emailInput.current.value);
     setPwValue(pwInput.current.value);
   };
