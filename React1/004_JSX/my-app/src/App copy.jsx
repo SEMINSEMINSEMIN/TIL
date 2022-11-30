@@ -3,8 +3,8 @@ import './app copy.css'
 function App() {
   // 자바스립트 주석과 같음
   // console.log('주석입니다.')
-  const styleH2 = {border: 'solid 1px black',
-  color: 'blue', fontSize: '32px'};
+  const styleH2 = {border: 'solid 1px red',
+  color: 'green', fontSize: '32px'};
   return (
     <div>
       {/* 최상위태그는 하나만! */}
