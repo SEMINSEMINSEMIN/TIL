@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label {
+            display: block;
+        }
+
+        /* input에 required가 있다면 */
+        input:required {
+            border: 5px solid green;
+        }
+
+        /* 올바르지 않은 입력이 이루어진 input 선택 */
+        input:invalid {
+            border: 5px solid red;
+        }
+
+        input:valid {
+            border: 5px solid blue;
+        }
+
+        input:required:invalid {
+            border: 5px solid teal;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- minlength="" maxlength=": 데이터의 길이 제한 -->
+    <!-- type: 입력 데이터의 타입 제한. number, email, text, password, url 등등 -->
+    <!-- required: 필수 입력 -->
+    <!-- <input type="text" required minlength="" maxlength=""> -->
+
+    <!-- min="" max="": 숫자의 크기 제한 -->
+    <!-- <input type="number" min="" max=""> -->
+    <form action="">
+        <label for="stuff">원하는 수량을 입력하세요. (최소 3개 이상)</label>
+        <!-- 아무것도 입력 안 해도 파란색으로 뜨는 이유: required가 아니라서 -->
+        <input type="number" min="3" id="stuff">
+
+        <label for="email">이메일을 입력하세요.</label>
+        <input type="email" id="email" required maxlength="20">
+
+        <input type="text" required>
+
+        <button type="submit">제출</button>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!-- 사용자가 입력한 비밀번호를 벨리데이션하는 폼을 만들어 봅시다.
+input은 비밀번호, 비밀번호 확인 두 가지가 있어야하며
+
+이때 만약 
+1. input에 아무것도 입력하지 않았거나
+2. 비밀번호 input과 비밀번호 확인 input의 값이 동일하지 않거나,
+3. 비밀번호의 패턴이 정규표현식과 일치하지 않은 경우
+
+에러메시지를 출력하도록 만들어보세요 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="pwInp">비밀번호 입력</label>
+        <input type="password" id="pwInp" pattern="(?=.*[!@#$%^&*()_+=-])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}"
+            required>
+        <label for="pwCheck">비밀번호 확인</label>
+        <input type="password" id="pwCheck" required>
+        <button>제출</button>
+    </form>
+
+    <script>
+        const btn = document.querySelector('button');
+
+        btn.addEventListener('click', (event) => {
+            const pwInp = document.querySelector('#pwInp');
+            const pwCheck = document.querySelector('#pwCheck');
+            pwValidate(pwInp);
+            pwCheckValidate(pwCheck);
+        });
+
+        // const inps = document.querySelectorAll("input");
+        // inps.forEach(e => {
+        //     e.addEventListener("input", () => {
+        //         e.setCustomValidity("");
+        //     })
+        // })
+
+        function pwValidate(target) {
+            if (target.validity.valueMissing) {
+                target.setCustomValidity("비밀번호를 입력하세요.");
+            } else if (target.validity.patternMismatch) {
+                target.setCustomValidity("특수기호, 대문자 각각을 한 개씩 포함한 8자리 이상의 비밀번호를 입력하세요.");
+            } else {
+                target.setCustomValidity("");
+            }
+        }
+
+        function pwCheckValidate(target) {
+            if (target.validity.valueMissing) {
+                target.setCustomValidity("비밀번호 체크가 필요합니다.");
+            } else if (pwInp.value !== pwCheck.value) {
+                target.setCustomValidity("비밀번호가 일치하지 않습니다.");
+            } else {
+                target.setCustomValidity("");
+            }
+        }
+    </script>
+</body>
+
+</html>

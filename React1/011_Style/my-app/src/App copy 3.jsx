@@ -5,21 +5,27 @@
 import styled from "styled-components";
 
 const ContentDiv = styled.div`
-  margin : 40px;
-  border: 1px solid black;
-`
+    margin: 40px;
+    border: 1px solid black;
+`;
 const ContentH2 = styled.h2`
-  width: 200px;
-  margin: 0 auto;
-  text-align: center;
-`
+    width: 200px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: yellow;
+`;
 
 function App() {
-  return (
-    <ContentDiv>
-      <ContentH2>Q&A</ContentH2>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil corporis consectetur, suscipit delectus nulla labore officiis corrupti ratione itaque. Sequi, modi corrupti? Doloribus voluptatem ipsa libero reiciendis quas expedita laboriosam.</p>
-    </ContentDiv>
-  );
+    return (
+        <ContentDiv>
+            <ContentH2>Q&A</ContentH2>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil
+                corporis consectetur, suscipit delectus nulla labore officiis
+                corrupti ratione itaque. Sequi, modi corrupti? Doloribus
+                voluptatem ipsa libero reiciendis quas expedita laboriosam.
+            </p>
+        </ContentDiv>
+    );
 }
 export default App;
