@@ -510,3 +510,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 -   App copy 2.js
 
 ## 15.4. useRef 사용해 봅시다!
+
+# 16. useMemo
+
+## 16.1. useMemo란
+
+## 16.2. useMemo와 useEffect 차이
