@@ -43,6 +43,17 @@
     -   게시글 등등에 활용 가능
 -   `013_Router/my-app/src/App.jsx`
     -   중첩된 라우터
+-   `014_Hook-useEffect/my-app/src/App copy 2.js`
+    -   useEffect 사용법 + useState
+-   `014_Hook-useEffect/my-app/src/App copy 3.js`
+    -   카운터 만들기
+    -   useEffect의 return 뒤 코드를 이용해 성능 최적화
+-   `015_Hook-useRef/my-app/src/App copy.js`
+    -   useRef와 다른 변수들의 차이
+-   `015_Hook-useRef/my-app/src/App.js`
+    -   useRef를 이용해 로그인 기능
+    -   아이디 / 비밀번호 입력 x시 해당 인풋창에 focus
+        -   .current.focus();
 
 # 4. JSX
 
@@ -430,3 +441,72 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 *   **User Page :** /users
 
 ## 13.4. 추가 연습문제
+
+# 14. Hook - useEffect
+
+## 14.1. 간단한 카운터 만들기
+
+-   App copy 3.js
+
+## 14.2. useEffect
+
+-   state를 지정하여 해당 스테이트가 변경되었음을 감지하면 함수를 실행함
+-   useEffect 구조
+
+    ```js
+    useEffect(()=>{
+        // state가 변경되어 렌더링 될 때 실행하는 부분!
+        // 공부하려고 책 펴는 타이밍!
+        return()=>{
+        // 다시 렌더링을 하기 이전에 컴포넌트를 지우고 다시 그리겠죠?
+        // 이 과정에서 지우기 전에 실행되는 부분입니다! clean-up이라고도 하죠.
+        // 여러분들 시험 공부 하나를 마치고 다음 시험 공부 전에 책상 정리하는 느낌이랄까요..
+        }
+    },[/*state값이 들어갑니다.(들어가지 않으면 최초 1번만 실행됩니다.*/)])
+    ```
+
+-   useEffect의 형태
+
+    ```js
+    // 컴포넌트가 업데이트 될 때마다 매번 실행
+    useEffect(()=>{
+        console.log('hello world');
+    })
+
+    // 처음에만 실행
+    useEffect(()=>{
+        console.log('hello world');
+    }, [])
+
+    // 변수들의 변화가 일어날 때마다 실행
+    useEffect(()=>{
+        console.log('hello world');
+    }, [변수1, 변수2...])
+    ```
+
+## 14.3. Quiz
+
+# 15. Hook - useRef
+
+-   useRef는 순수 자바스크립트 객체를 생성한다.
+    ```js
+    const refContainer = useRef(initialValue);
+    // 값의 접근: refContainer.current
+    ```
+-   사용 용도
+    -   렌더링과 상관없이 값을 변경하고 싶을 때
+    -   컴포넌트의 태그에 직접 접근하고 싶을 때, useRef를 이용해 useRef가 접근한 태그 요소의 값을 바꿀 때는 리렌더링을 발생하지 않는다.
+-   남용하지 말것
+-   ref는 전역으로 작동하지 않고 컴포넌트 내부에서만 작동한다.
+
+## 15.1. useRef
+
+## 15.2. useRef와 다른 변수들의 차이
+
+-   App copy.js
+
+## 15.3. useRef를 사용하지 않은 방식
+
+-   App copy 2.js
+
+## 15.4. useRef 사용해 봅시다!
