@@ -7,16 +7,23 @@ import {
     useLocation,
 } from "react-router-dom";
 import axios from "axios";
-import { useEffect } from "react";
-
+import { 
+  useLayoutEffect, 
+  useRef 
+} from "react";
 import Main from "./Pages/Main";
 import Product from "./Pages/Product";
 import Cart from "./Pages/Cart";
 
 function App() {
-  useEffect(() => {
-    axios.get("")
-  })
+    const data = useRef(null);
+    useLayoutEffect(() => {
+      axios.get("http://35.76.53.28:8080/mall")
+        .then((res) => {
+          data.current = res.data;
+        })
+        .then(console.log(data));
+    }, []);
     return (
         <BrowserRouter>
             <Routes>
@@ -28,28 +35,3 @@ function App() {
     );
 }
 export default App;
-
-
-
-
-export default function Product() {
-  useEffect(() => {
-    // '마운트 될 때' '브라우저에 그려진 후' 딱 한 번 실행
-    axios.get("http://test.api.weniv.co.kr/mall").then((res) => {
-      console.log("axios");
-      console.log(res); // Object
-      console.log(res.data);
-    });
-    fetch("http://test.api.weniv.co.kr/mall")
-      .then((res) => {
-        console.log("fetch");
-        console.log(res); // Response
-        // console.log(res.json()) // pending됩니다.
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-      });
-  }, []);
-  return <div>Product</div>;
-}
