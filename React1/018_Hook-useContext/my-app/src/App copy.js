@@ -5,7 +5,7 @@ import { useContext, createContext } from "react";
 const UserInfo = createContext({ name: "gary", id: "garyIsFree" });
 
 const App = () => {
-  return <HelloLicat />;
+    return <HelloLicat value={{ name: "semin", id: "ksm9802" }} />;
 };
 
 // const HelloLicat = () => {
@@ -22,25 +22,24 @@ const App = () => {
 //   );
 // };
 
-const HelloLicat = () => {
-  const { name, id } = useContext(UserInfo);
-  return (
-    <>
-      <h2>{name}</h2>
-      <strong>{id}</strong>
-      <HelloLicatTwo />
-    </>
-  );
+const HelloLicat = ({ value: { name, id } }) => {
+    return (
+        <>
+            <h2>{name}</h2>
+            <strong>{id}</strong>
+            <HelloLicatTwo />
+        </>
+    );
 };
 
 const HelloLicatTwo = () => {
-  const { name, id } = useContext(UserInfo);
-  return (
-    <div>
-      <h2>{name}</h2>
-      <strong>{id}</strong>
-    </div>
-  );
+    const { name, id } = useContext(UserInfo);
+    return (
+        <div>
+            <h2>{name}</h2>
+            <strong>{id}</strong>
+        </div>
+    );
 };
 
 export default App;
