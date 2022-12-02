@@ -9,25 +9,24 @@ import {
 import axios from "axios";
 import { 
   useLayoutEffect, 
-  useRef 
+  useState
 } from "react";
 import Main from "./Pages/Main";
 import Product from "./Pages/Product";
 import Cart from "./Pages/Cart";
 
 function App() {
-    const data = useRef(null);
+    const [data, setData] = useState([]);
     useLayoutEffect(() => {
       axios.get("http://35.76.53.28:8080/mall")
         .then((res) => {
-          data.current = res.data;
+          setData(res.data);
         })
-        .then(console.log(data));
     }, []);
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Main />} />
+                <Route path="/" element={<Main data={data} />} />
                 <Route path="/products/:id" element={<Product />} />
                 <Route path="/cart" element={<Cart />} />
             </Routes>
