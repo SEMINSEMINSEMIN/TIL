@@ -1,90 +1,96 @@
 # 중요한 예제
 
--   `006_Component/my-app/src/App.jsx`
+-   [`006_Component/my-app/src/App.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/006_Component/my-app/src/App.jsx)
     -   파일 분리
--   `006_Component/my-app/src/구조분해할당.jsx`
--   `007_Hook-useState/my-app/src/App.jsx`
+-   [`006_Component/my-app/src/구조분해할당.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/006_Component/my-app/src/%EA%B5%AC%EC%A1%B0%EB%B6%84%ED%95%B4%ED%95%A0%EB%8B%B9.jsx)
+-   [`007_Hook-useState/my-app/src/App.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/007_Hook-useState/my-app/src/App.jsx)
     -   useState + 조건
--   `008_Event/my-app/src/App.jsx`
+    -   좋아요 버튼: 누를 때마다 스타일 변하게
+-   [`008_Event/my-app/src/App.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/008_Event/my-app/src/App.jsx)
     -   로그인 / 로그아웃
-    -   state 끌어올리기
--   `009_Component_List/my-app/src/App.jsx`
+    -   state 끌어올리기: 앱(여기에 useState 변수가 있음), 하위 페이지(setState 전달, 하위 페이지에서 일정 조건에서 컨트롤)
+    -   로그인 된 상태에서는 홈페이지가 보임
+    -   로그인이 되지 않은 상태에서는 로그인 화면이 보임
+-   [`009_Component_List/my-app/src/App.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/009_Component_List/my-app/src/App.jsx)
     -   배열 내 데이터 뿌려주기
+    -   리스트를 이용해 렌더링
     -   key 값
--   `010_조건부_렌더링/my-app/src/App.jsx`
+-   [`010_조건부_렌더링/my-app/src/App.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/010_%EC%A1%B0%EA%B1%B4%EB%B6%80_%EB%A0%8C%EB%8D%94%EB%A7%81/my-app/src/App.jsx)
     -   navbar 활용 가능
     -   클릭에 따라 렌더링 바꾸고 스타일 적용
--   `011_Style/my-app/src/App copy.jsx`
+-   [`011_Style/my-app/src/App copy.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/011_Style/my-app/src/App%20copy.jsx)
     -   글로벌 스타일
--   `011_Style/my-app/src/App copy 2.jsx`
+-   [`011_Style/my-app/src/App copy 2.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/011_Style/my-app/src/App%20copy%202.jsx)
     -   리셋 스타일
--   `011_Style/my-app/src/App copy 3.jsx`
+-   [`011_Style/my-app/src/App copy 3.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/011_Style/my-app/src/App%20copy%203.jsx)
     -   스타일드 컴포넌트 사용법
--   `011_Style/my-app/src/App copy 4.jsx`
+-   [`011_Style/my-app/src/App copy 4.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/011_Style/my-app/src/App%20copy%204.jsx)
     -   스타일드 컴포넌트: props에 따른 조건부 스타일
--   `011_Style/my-app/src/조건부스타일함수형태.jsx`
+-   [`011_Style/my-app/src/조건부스타일함수형태.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/011_Style/my-app/src/%EC%A1%B0%EA%B1%B4%EB%B6%80%EC%8A%A4%ED%83%80%EC%9D%BC%ED%95%A8%EC%88%98%ED%98%95%ED%83%9C.jsx)
     -   스타일드 컴포넌트: 조건부 스타일의 함수 형태
--   `011_Style/my-app/src/App copy 5.jsx`, `011_Style/my-app/src/styled_components_확장.jsx`
+-   [`011_Style/my-app/src/App copy 5.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/011_Style/my-app/src/App%20copy%205.jsx), [`011_Style/my-app/src/styled_components_확장.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/011_Style/my-app/src/styled_components_%ED%99%95%EC%9E%A5.jsx)
     -   스타일드 컴포넌트: 스타일드 컴포넌트 내려받기
--   `011_Style/my-app/src/App.jsx`
+-   [`011_Style/my-app/src/App.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/011_Style/my-app/src/App.jsx)
     -   css + styled-components
--   `011_Style/my-app/src/App copy 5.jsx`
+    -   css가 여러 스타일드 컴포넌트에서 쓰일 때 사용하기 좋을듯
+-   [`011_Style/my-app/src/App copy 5.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/011_Style/my-app/src/App%20copy%205.jsx)
     -   module css
--   `012_합성_컴포넌트/my-app/src/App copy.jsx`
+-   [`012_합성_컴포넌트/my-app/src/App copy.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/012_%ED%95%A9%EC%84%B1_%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8/my-app/src/App%20copy.jsx)
     -   합성 컴포넌트 만들기
--   `013_Router/my-app/src/App copy.jsx`
+-   [`013_Router/my-app/src/App copy.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/013_Router/my-app/src/App%20copy.jsx)
     -   라우터: Component props 전달하기
--   `013_Router/my-app/src/App copy 2.jsx`
+-   [`013_Router/my-app/src/App copy 2.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/013_Router/my-app/src/App%20copy%202.jsx)
     -   라우터: Link
--   `013_Router/my-app/src/App copy 3.jsx`
+-   [`013_Router/my-app/src/App copy 3.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/013_Router/my-app/src/App%20copy%203.jsx)
     -   라우터: 파라미터 설정
--   `013_Router/my-app/src/App copy 4.jsx`
+-   [`013_Router/my-app/src/App copy 4.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/013_Router/my-app/src/App%20copy%204.jsx)
     -   라우터: 파라미터 설정 & useLocation
     -   게시글 등등에 활용 가능
--   `013_Router/my-app/src/App.jsx`
+-   [`013_Router/my-app/src/App.jsx`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/013_Router/my-app/src/App.jsx)
     -   중첩된 라우터
--   `014_Hook-useEffect/my-app/src/App copy 2.js`
+-   [`014_Hook-useEffect/my-app/src/App copy 2.js`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/014_Hook-useEffect/my-app/src/App%20copy%202.js)
     -   useEffect 사용법 + useState
--   `014_Hook-useEffect/my-app/src/App copy 3.js`
+-   [`014_Hook-useEffect/my-app/src/App copy 3.js`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/014_Hook-useEffect/my-app/src/App%20copy%203.js)
     -   카운터 만들기
     -   useEffect의 return 뒤 코드를 이용해 성능 최적화
--   `015_Hook-useRef/my-app/src/App copy.js`
-    -   useRef와 다른 변수들의 차이
--   `015_Hook-useRef/my-app/src/App.js`
+-   [`015_Hook-useRef/my-app/src/App copy.js`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/015_Hook-useRef/my-app/src/App%20copy.js)
+    -   useRef와 다른 변수들의 차이: 값을 기억한다, 렌더링 x
+-   [`015_Hook-useRef/my-app/src/App.js`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/015_Hook-useRef/my-app/src/App.js)
     -   useRef를 이용해 로그인 기능
+    -   useRef를 이용해 HTML 요소 접근
     -   아이디 / 비밀번호 입력 x시 해당 인풋창에 focus
         -   .current.focus();
--   `016_Hook-useMemo/my-app/src/App copy.js`
+-   [`016_Hook-useMemo/my-app/src/App copy.js`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/016_Hook-useMemo/my-app/src/App%20copy.js)
     -   useMemo를 사용하지 않아 부하가 생기는 코드
-    -   해결: `016_Hook-useMemo/my-app/src/App copy 2.js`
--   `016_Hook-useMemo/my-app/src/App copy 3.js`
+    -   해결: [`016_Hook-useMemo/my-app/src/App copy 2.js`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/016_Hook-useMemo/my-app/src/App%20copy%202.js)
+-   [`016_Hook-useMemo/my-app/src/App copy 3.js`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/016_Hook-useMemo/my-app/src/App%20copy%203.js)
     -   useMemo를 사용하지 않아 인풋창에 입력할 때마다 리렌더링이 발생하는 코드
-    -   해결: `016_Hook-useMemo/my-app/src/App copy 4.js`
+    -   해결: [`016_Hook-useMemo/my-app/src/App copy 4.js`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/016_Hook-useMemo/my-app/src/App%20copy%204.js)
         -   useState 사용시 객체를 감시하고 있을 때 주의해야할 점
         -   객체 안의 값을 아무리 바꿔도 참조하고 있는 건 객체의 값이 아니라 객체의 주소
         -   리액트는 새로운 값으로 변했다고 생각하지 않기 때문에 리렌더링이 일어나지 않는다
         -   해결법: 스프레드 기법을 이용해 새로운 객체를 만든 뒤 그걸 setState(새로운 객체) 이런식으로 해줘야 함
--   `017_Context/my-app/src/App copy.js`
+-   [`017_Context/my-app/src/App copy.js`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/017_Context/my-app/src/App%20copy.js)
     -   props를 객체로 전달했을 때 구조분해 방법
--   `017_Context/my-app/src/App copy 2.js`
+-   [`017_Context/my-app/src/App copy 2.js`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/017_Context/my-app/src/App%20copy%202.js)
     -   context 사용 방법: props를 통하지 않고 전달
--   `017_Context/my-app/src/App.js`
-    -   Context.Provide로 전달 값 변경
--   `018_Hook-useContext/my-app/src/App copy.js`
+-   [`017_Context/my-app/src/App.js`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/017_Context/my-app/src/App.js)
+    -   Context.Provider로 전달 값 변경
+-   [`018_Hook-useContext/my-app/src/App copy.js`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/018_Hook-useContext/my-app/src/App%20copy.js)
     -   Context API에서 Context.consumer로 전달하던 방식을 Hooks의 useContext를 사용해서 더 편하게 값을 전달할 수 있다.
     -   함수형 컴포넌트에서만 사용 가능
--   `018_Hook-useContext/my-app/src/App.js`
+-   [`018_Hook-useContext/my-app/src/App.js`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/018_Hook-useContext/my-app/src/App.js)
     -   파일 분리시 useContext 사용법
--   `020_useState-Lazy-initialize/my-app/src/App copy.js`
+-   [`020_useState-Lazy-initialize/my-app/src/App copy.js`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/020_useState-Lazy_initialize/my-app/src/App%20copy.js)
     -   lazy initialize를 하지 않았을 때 문제점
-    -   해결법: `020_useState-Lazy-initialize/my-app/src/App.js`
--   `020_useState-Lazy-initialize/my-app/src/App copy 2.js`
+    -   해결법: [`020_useState-Lazy-initialize/my-app/src/App.js`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/020_useState-Lazy_initialize/my-app/src/App.js)
+-   [`020_useState-Lazy-initialize/my-app/src/App copy 2.js`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/020_useState-Lazy_initialize/my-app/src/App%20copy%202.js)
     -   lazy initialize: setState하는 방법
--   `021_Functional_Hook_Flow/my-app/src/App.js`
+-   [`021_Functional_Hook_Flow/my-app/src/App.js`](https://github.com/SEMINSEMINSEMIN/TIL/tree/main/React1/021_Functional_Hook_Flow/my-app)
     -   함수형 Hook Flow
     -   [useLayoutEffect vs useEffect](#2122-레이아웃-이펙트란)
     -   마운트, 업데이트, 언마운트별로 동작 다르게 하기
--   `022_Custom_Hook/my-app/src/App.js`
+-   [`022_Custom_Hook/my-app/src/App.js`](https://github.com/SEMINSEMINSEMIN/TIL/blob/main/React1/022_Custom_Hook/my-app/src/App.js)
     -   Custom Hook - 반복되는 Hook 재사용 위함
 
 # 4. JSX
