@@ -2,18 +2,14 @@ import React from "react";
 import { ModalBackground, ModalCard } from "./modal.style";
 
 export default function Modal({text, handleClickByUpper}) {
-  const handleClick = () => {
-    handleClickByUpper();
-  }
-
   return (
     <div>
-      <ModalBackground onClick={handleClick}/>
+      <ModalBackground onClick={handleClickByUpper}/>
       <ModalCard>
           <h1>Invalid input</h1>
           <div>
               <p>{text}</p>
-              <button type="click" onClick={handleClick}>Okay</button>
+              <button type="click" onClick={handleClickByUpper}>Okay</button>
           </div>
       </ModalCard>
     </div>
