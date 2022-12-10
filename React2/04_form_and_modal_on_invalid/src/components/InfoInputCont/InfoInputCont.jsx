@@ -16,9 +16,9 @@ export default function InfoInputCont({handleSubmitModalByUpper, handleSubmitDat
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    if (!nameVal || !ageVal) {
+    if (nameVal.trim().length === 0 || ageVal.trim().length === 0) {
       handleSubmitModalByUpper[0](true);
-    } else if (ageVal <= 0) {
+    } else if (+ageVal <= 0) {
       handleSubmitModalByUpper[1](true);
     } else {
       const newData = {name: nameVal, age: ageVal};

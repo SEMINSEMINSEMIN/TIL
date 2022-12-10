@@ -6,16 +6,18 @@ export const ModalBackground = styled.div`
     left: 0;
     bottom: 0;
     right: 0;
+    z-index: 10;
     background: rgba(0, 0, 0, 0.8);
 `;
 
 export const ModalCard = styled.article`
-    position: absolute;
+    position: fixed;
     overflow: hidden;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
+    z-index: 100;
     background-color: white;
     border-radius: 15px;
 
